@@ -32,4 +32,4 @@ var requesterSchema = new mongoose.Schema({
 },{ timestamps: true });
 
 
-module.exports = mongoose.model('requester',requesterSchema);
+module.exports = mongoose.model('Requester',requesterSchema);

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const crypto = require("crypto")
-const uuidv1 = require("uuid/v1");
+const { v1: uuidv1 } = require('uuid');
 
 
 var userSchema = new mongoose.Schema({
@@ -48,25 +48,25 @@ userSchema.virtual("password")
     })
     .get(function(){
         return this._password;
-    })
+    });
 
-userSchema.method = {
+//Schema methods
+userSchema.methods = {
 
     authenticate: function(plainpassword){
         return this.securePassword(plainpassword) === this.encry_password;
     },
 
-    securePassword: function(plain_password) {
-        if (!password) return ""; //return empty
+    securePassword: function(plainpassword) {
+        if (!plainpassword) return ""; //return empty
         try {
             return crypto.createHmac('sha256',this.salt)
-            .update(plain_password)
+            .update(plainpassword)
             .digest('hex')
-
         } catch (err) {
             return "";
         }
     }//cannot use arrow function
-}
+};
 
-module.exports = mongoose.model("user",userSchema)
+module.exports = mongoose.model("User",userSchema)

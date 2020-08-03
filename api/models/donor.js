@@ -48,4 +48,4 @@ var donorSchema = new mongoose.Schema({
 },{ timestamps: true });
 
 
-module.exports = mongoose.model('donor', donorSchema);
+module.exports = mongoose.model('Donor', donorSchema);
