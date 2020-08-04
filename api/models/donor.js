@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
-const crypto = require("crypto");
-const uuidv1 = require("uuid/v1");
+
 
 var donorSchema = new mongoose.Schema({
     donor_id: {
         type: mongoose.ObjectId,
-        ref:'user',
+        ref:'User',
         required: true
     },
     donor_name: String,

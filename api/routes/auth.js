@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator')
 
 
 //import controllers
-const {signup,login,logout} = require('../controllers/auth')
+const {signup, login, logout, isLoggedIn} = require('../controllers/auth')
 
 router.post('/signup', [
     check('email').isEmail().withMessage('Not a valid email id'),
@@ -19,5 +19,9 @@ router.post('/login', [
 ], login)
 
 router.get("/logout", logout);
+
+router.get("/testroute", isLoggedIn, (req,res) => {
+    res.send(req.auth)
+});
 
 module.exports = router;

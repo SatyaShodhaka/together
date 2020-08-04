@@ -8,8 +8,9 @@ const port = process.env.PORT;
 
 //routes import
 const authRoutes = require('./routes/auth');
-
-
+const donorRoutes = require('./routes/donor');
+const requesterRoutes = require('./routes/requester');
+const adminRoutes = require('./routes/admin')
 
 //settingupmiddleware
 const bodyParser = require("body-parser");
@@ -38,6 +39,9 @@ app.use(cors());
 
 //Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/donor', donorRoutes);
+app.use('/api/requester', requesterRoutes);
+app.use('/api/admin', adminRoutes);
 
 
 //Start listening

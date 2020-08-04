@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 var requesterSchema = new mongoose.Schema({
     requester_id: {
         type: mongoose.ObjectId,
-        ref:'user',
+        ref:'User',
         required: true
     },
-    requester_name: String,
-    required_bg: {
+    patient_name: String,
+    patient_bg: {
         type: String,
         enum: ['A+','A-','B+','B-','AB+','AB-','O+','O-'],
         required: true
@@ -17,7 +17,7 @@ var requesterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    recieve_updates: {
+    notifications: {
         type: Boolean,
         default: true 
     },
