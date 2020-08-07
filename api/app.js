@@ -10,6 +10,7 @@ const port = process.env.PORT;
 const authRoutes = require('./routes/auth');
 const donorRoutes = require('./routes/donor');
 const requesterRoutes = require('./routes/requester');
+const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin')
 
 //settingupmiddleware
@@ -41,7 +42,9 @@ app.use(cors());
 app.use('/api/auth', authRoutes);
 app.use('/api/donor', donorRoutes);
 app.use('/api/requester', requesterRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/admin', adminRoutes);
+
 
 
 //Start listening

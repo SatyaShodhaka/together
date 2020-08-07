@@ -20,6 +20,7 @@ router.post('/login', [
 
 router.get("/logout", logout);
 
+//testing isLoggedIn
 router.get("/testroute", isLoggedIn, (req,res) => {
     res.send(req.auth)
 });
