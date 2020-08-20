@@ -31,9 +31,24 @@ exports.getProfile = (req, res) => {
     
 };
 
-exports.profileId = (req, res) => {
-
+//middleware to find the user and attach the found profile with the request object
+exports.profileById = (req, res, next, id) => {
+    User.findById(id).exec((err, user) => {
+        if(err || !user){
+            return res.status(400).json({
+                error: "No user was found"
+            });
+        }
+        req.profile = user;
+        next();
+    });
 };
+
+exports.sendProfileById = (req, res) => {
+    if(req.profile != null) {
+        res.status(200).json(req.profile);
+    }
+}
 
 exports.editProfile = (req, res) => {
 
